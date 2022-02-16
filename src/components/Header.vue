@@ -1,13 +1,40 @@
 <template>
     <div class="header">
-        <div class="left">左</div>
+        <div class="left">
+            <span style="font-size: 20px;">{{ name }}</span>
+        </div>
         <div class="right">右</div>
     </div>
 </template>
 
-<script>
-export default {
-    name:'Header'
+<script lang="ts">
+import {reactive, toRefs, ref} from "vue"
+import { useRouter } from 'vue-router'
+interface dataProps{
+
+}
+export default{
+    name:"App",
+    setup() {
+        const router = useRouter()
+        const pathMap = {
+            index: '首页',
+            add: '添加商品'
+        }
+        const state = reactive({
+            name: '首页'
+        })
+        // 监听路由变化使用afterEach
+        router.afterEach((to) => {
+            console.log('to', to);
+             // to 能获取到路由相关信息。
+            const {id} = to.query
+            state.name = pathMap[to.name]
+        })
+        return {
+            ...toRefs(state)
+        }
+    }
 }
 </script>
 

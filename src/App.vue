@@ -3,15 +3,11 @@
     <el-container class="container">
       <el-aside class="aside">
         <div class="head">
-            <img src="//s.weituibao.com/1582958061265/mlogo.png" alt="logo">
-            <span>vue3 admin</span>
+          <img src="//s.weituibao.com/1582958061265/mlogo.png" alt="logo" />
+          <span>vue3 admin</span>
         </div>
         <div class="line"></div>
-        <el-menu
-        background-color="#222832"
-        text-color="#fff"
-        router="true"
-        >
+        <el-menu background-color="#222832" text-color="#fff" :router="true">
           <el-submenu index="1">
             <template #title>
               <span>Dashboard</span>
@@ -20,72 +16,75 @@
               <el-menu-item index="/">
                 <i class="el-icon-data-line"></i>首页
               </el-menu-item>
+              <el-menu-item index="/add">
+                <i class="el-icon-data-line"></i>添加商品
+              </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
       </el-aside>
       <el-container class="content">
+        <Header />
         <div class="main">
-          <Header />
           <router-view></router-view>
-          <Footer />
         </div>
+        <Footer />
       </el-container>
     </el-container>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 export default {
-  name: 'APP',
-  components: {Header, Footer}
-}
+  name: "APP",
+  components: { Header, Footer },
+};
 </script>
 
 <style scoped>
-  .layout {
-    min-height: 100vh;
-    background-color: #fff;
-    display: flex;
-  }
-  .container {
-    height: 100vh;
-  }
-  .aside {
-    width: 200px !important;
-    background-color: #222832;
-  }
-  .head {
-    display: flex;
-    color: #fff;
-    justify-content: center;
-    align-items: center;
-  }
-  .head img {
-    width: 50px;
-    margin-right: 10px;
-  }
-  .head span {
-    font-size: 20px;
-    color: #ffffff;
-  }
-  .line {
-    border-top: 1px solid hsla(0,0%,100%,.05);
-    border-bottom: 1px solid rgba(0,0,0,.2);
-  }
-  .content {
-    display: flex;
-    flex-direction: column;
-    max-height: 100vh;
-    overflow: hidden;
-  }
-  .main {
-    height: 100vh;
-    overflow: auto;
-    padding: 10px;
-  }
+.layout {
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+}
+.container {
+  height: 100vh;
+}
+.aside {
+  width: 200px !important;
+  background-color: #222832;
+}
+.head {
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+}
+.head img {
+  width: 50px;
+  margin-right: 10px;
+}
+.head span {
+  font-size: 20px;
+  color: #ffffff;
+}
+.line {
+  border-top: 1px solid hsla(0, 0%, 100%, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  overflow: hidden;
+}
+.main {
+  height: calc(100vh-100px);
+  overflow: auto;
+  padding: 10px;
+}
 </style>
 
 <style>
@@ -95,17 +94,17 @@ body {
   box-sizing: border-box;
 }
 .el-menu {
-  border-right: none!important;
+  border-right: none !important;
 }
 .el-submenu {
-  border-top: 1px solid hsla(0, 0%, 100%, .05);
-  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  border-top: 1px solid hsla(0, 0%, 100%, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .el-submenu:first-child {
   border-top: none;
 }
 .el-submenu [class^="el-icon-"] {
-  vertical-align: -1px!important; 
+  vertical-align: -1px !important;
 }
 a {
   color: #409eff;
@@ -118,5 +117,4 @@ a {
 .el-popper__arrow {
   display: none;
 }
-
 </style>
