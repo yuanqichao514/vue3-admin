@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <el-container class="container">
+    <el-container class="container" v-if="showMenu">
       <el-aside class="aside">
         <div class="head">
           <img src="//s.weituibao.com/1582958061265/mlogo.png" alt="logo" />
@@ -31,15 +31,37 @@
         <Footer />
       </el-container>
     </el-container>
+    <el-container v-else class="containerElse">
+      <router-view></router-view>
+    </el-container>
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { reactive, toRefs } from 'vue';
+import { useRouter } from 'vue-router'
 export default {
   name: "APP",
   components: { Header, Footer },
+  setup() {
+    const noMenu = ['/login']
+
+    const router = useRouter()
+
+    const state = reactive({
+      showMenu: true
+    })
+
+    router.beforeEach((to) => {
+      state.showMenu = !noMenu.includes(to.path)
+    })
+
+    return {
+      ...toRefs(state)
+    }
+  }
 };
 </script>
 
@@ -51,6 +73,11 @@ export default {
 }
 .container {
   height: 100vh;
+}
+.containerElse {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 .aside {
   width: 200px !important;

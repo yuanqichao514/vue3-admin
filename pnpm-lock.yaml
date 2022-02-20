@@ -4,6 +4,7 @@ specifiers:
   '@vitejs/plugin-vue': ^2.2.0
   axios: ^0.26.0
   element-plus: 1.0.2-beta.28
+  js-md5: ^0.7.3
   vite: ^2.8.0
   vite-plugin-babel-import: ^2.0.5
   vue: ^3.2.25
@@ -12,6 +13,7 @@ specifiers:
 dependencies:
   axios: 0.26.0
   element-plus: 1.0.2-beta.28_vue@3.2.31
+  js-md5: 0.7.3
   vue: 3.2.31
   vue-router: 4.0.12_vue@3.2.31
 
@@ -622,6 +624,10 @@ packages:
     dependencies:
       has: 1.0.3
     dev: true
+
+  /js-md5/0.7.3:
+    resolution: {integrity: sha512-ZC41vPSTLKGwIRjqDh8DfXoCrdQIyBgspJVPXHBGu4nZlAEvG3nf+jO9avM9RmLiGakg7vz974ms99nEV0tmTQ==}
+    dev: false
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
