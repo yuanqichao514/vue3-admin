@@ -5,19 +5,18 @@ import config from '../../config';
 import { localGet } from './index'
 import { ElMessage } from 'element-plus';
 
-// console.log(config, import.meta.env.MODE);
 // 这边由于后端没有区分测试和正式，姑且都写成一个接口。
-axios.defaults.baseURL = config[import.meta.env.MODE].baseURL
-// 携带 cookie，对目前的项目没有什么作用，因为我们是 token 鉴权
-axios.defaults.withCredentials = true
-// 请求头，headers 信息
-axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
-axios.defaults.headers['token'] = localGet('token') || ''
-// 默认post请求，使用application/json形式
-axios.defaults.headers.post['Content-Type'] = 'application/json'
 
+const instance = axios.create({
+    baseURL: config[import.meta.env.MODE].baseUrl,
+    withCredentials: true,
+    headers: {
+        'X-Requested-With':'XMLHttpRequest',
+        'token': localGet('token') || '',
+    }
+})
 // 请求拦截器，内部根据返回值，重新组装，统一管理
-axios.interceptors.response.use(res => {
+instance.interceptors.response.use(res => {
     // if(typeof res.data !== 'object') {
     //     ElMessage.error('服务器异常！')
     //     return Promise.reject(res)
@@ -37,4 +36,34 @@ axios.interceptors.response.use(res => {
     return res.data.data
 })
 
-export default axios
+const post = (url, data) => {//post请求
+    return instance( {
+        method: 'post',
+        url: url,
+        dataType: 'JSON',
+        data: data,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    } )
+}
+
+const get = (url, data) => {//get请求
+    return instance( {
+        method: 'get',
+        url: url,
+        dataType: 'JSON',
+        params: data
+    } )
+}
+
+const delete1 = (url, data) => {
+    return instance( {
+        method: 'delete',
+        url: url,
+        dataType: 'JSON',
+        params: data
+    })
+}
+
+export default {get, post, delete1}

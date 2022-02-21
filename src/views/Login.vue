@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import axios from '@/utils/axios'
+import https from '@/utils/axios'
 import md5 from 'js-md5'
 import { ref, reactive, toRefs } from 'vue'
 import { localSet } from '@/utils'
@@ -57,8 +57,7 @@ export default {
       const submitForm = async() => {
         loginForm.value.validate((valid) => {
           if(valid) {
-            axios.defaults.baseURL = 'api'
-            axios.post('/adminUser/login', {
+            https.post('/adminUser/login', {
               userName: state.ruleForm.userName,
               passwordMd5: md5(state.ruleForm.password),
             }).then(res => {

@@ -1,9 +1,10 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@types/lodash-es': '*'
   '@vitejs/plugin-vue': ^2.2.0
   axios: ^0.26.0
-  element-plus: 1.0.2-beta.28
+  element-plus: 1.0.2-beta.70
   js-md5: ^0.7.3
   vite: ^2.8.0
   vite-plugin-babel-import: ^2.0.5
@@ -11,8 +12,9 @@ specifiers:
   vue-router: ^4.0.12
 
 dependencies:
+  '@types/lodash-es': 4.17.6
   axios: 0.26.0
-  element-plus: 1.0.2-beta.28_vue@3.2.31
+  element-plus: 1.0.2-beta.70_vue@3.2.31
   js-md5: 0.7.3
   vue: 3.2.31
   vue-router: 4.0.12_vue@3.2.31
@@ -144,8 +146,23 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
+  /@element-plus/icons/0.0.11:
+    resolution: {integrity: sha512-iKQXSxXu131Ai+I9Ymtcof9WId7kaXvB1+WRfAfpQCW7UiAMYgdNDqb/u0hgTo2Yq3MwC4MWJnNuTBEpG8r7+A==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+    dev: false
+
   /@popperjs/core/2.11.2:
     resolution: {integrity: sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==}
+    dev: false
+
+  /@types/lodash-es/4.17.6:
+    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
+    dependencies:
+      '@types/lodash': 4.14.178
+    dev: false
+
+  /@types/lodash/4.14.178:
+    resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
     dev: false
 
   /@vitejs/plugin-vue/2.2.0_vite@2.8.2+vue@3.2.31:
@@ -351,11 +368,12 @@ packages:
       tslib: 2.3.1
     dev: true
 
-  /element-plus/1.0.2-beta.28_vue@3.2.31:
-    resolution: {integrity: sha512-JlScFjSIdVGvzTLiJewLBMQvMVCGcSePCcbu2QsqXiVn47G4Qtq6Om8cm2Uq/gP/R6HH5OptjEAS78livWF3Bw==}
+  /element-plus/1.0.2-beta.70_vue@3.2.31:
+    resolution: {integrity: sha512-q9nqxELedLTFMCff5M5CsFbjWQYa6FvcLr1p7QZI64stZ7oEx1EcFnLEeP7dTg0g6iZf1fnaL5df1fVKWY0Dcg==}
     peerDependencies:
-      vue: ^3.0.5
+      vue: 3.1.x
     dependencies:
+      '@element-plus/icons': 0.0.11
       '@popperjs/core': 2.11.2
       async-validator: 3.5.2
       dayjs: 1.10.7
