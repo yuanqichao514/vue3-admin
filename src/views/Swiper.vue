@@ -36,6 +36,7 @@
             <el-table-column prop="carouselRank" label="排序值" width="120"></el-table-column>
             <el-table-column prop="createTime" label="添加时间" width="200"></el-table-column>
         </el-table>
+        <!--总数超过一页，再展示分页器-->
         <el-pagination
             background
             layout="prev, pager, next"
@@ -120,5 +121,5 @@ const handleDelete = () => {
     })
 }
 
-const { tableData, loading, type } = toRefs(state)
+const { tableData, loading, type, currentPage, total, pageSize } = toRefs(state)
 </script>

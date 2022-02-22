@@ -35,6 +35,15 @@
               <el-menu-item index="/swiper">
                 <i class="el-icon-picture" />轮播图配置
               </el-menu-item>
+              <el-menu-item index="/hot">
+                <i class="el-icon-star-on" />热销商品配置
+              </el-menu-item>
+              <el-menu-item index="/new">
+                <i class="el-icon-sell" />新品上线配置
+              </el-menu-item>
+              <el-menu-item index="/recommend">
+                <i class="el-icon-thumb" />为你推荐配置
+              </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -74,15 +83,15 @@ export default {
     })
 
     router.beforeEach((to, from, next) => {
-      if(to.path == "/login") {
+      if (to.path == "/login") {
         // 如果路径是 /login 则正常执行
         next()
-      }else {
+      } else {
         // 如果不是 /login，判断是否有 token
-        if(!localGet('token')) {
+        if (!localGet('token')) {
           // 如果没有，则跳至登录页面
-          next({path: '/login'})
-        }else {
+          next({ path: '/login' })
+        } else {
           next()
         }
       }
