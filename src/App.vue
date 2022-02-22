@@ -7,17 +7,33 @@
           <span>vue3 admin</span>
         </div>
         <div class="line"></div>
-        <el-menu background-color="#222832" text-color="#fff" :router="true">
+        <el-menu
+          background-color="#222832"
+          text-color="#fff"
+          :router="true"
+          :default-openeds="defaultOpen"
+          :default-active="currentPath"
+        >
           <el-submenu index="1">
             <template #title>
               <span>Dashboard</span>
             </template>
             <el-menu-item-group>
               <el-menu-item index="/">
-                <i class="el-icon-data-line"></i>首页
+                <i class="el-icon-odometer" />首页
               </el-menu-item>
               <el-menu-item index="/add">
-                <i class="el-icon-data-line"></i>添加商品
+                <i class="el-icon-plus" />添加商品
+              </el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+          <el-submenu index="2">
+            <template #title>
+              <span>首页配置</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/swiper">
+                <i class="el-icon-picture" />轮播图配置
               </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
@@ -42,6 +58,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { reactive, toRefs } from 'vue';
 import { useRouter } from 'vue-router'
+import { localGet, pathMap } from "./utils";
 export default {
   name: "APP",
   components: { Header, Footer },
@@ -51,11 +68,27 @@ export default {
     const router = useRouter()
 
     const state = reactive({
-      showMenu: true
+      showMenu: true,
+      defaultOpen: ['1', '2'],
+      currentPath: '/'
     })
 
-    router.beforeEach((to) => {
+    router.beforeEach((to, from, next) => {
+      if(to.path == "/login") {
+        // 如果路径是 /login 则正常执行
+        next()
+      }else {
+        // 如果不是 /login，判断是否有 token
+        if(!localGet('token')) {
+          // 如果没有，则跳至登录页面
+          next({path: '/login'})
+        }else {
+          next()
+        }
+      }
       state.showMenu = !noMenu.includes(to.path)
+      state.currentPath = to.path
+      document.title = pathMap[to.name]
     })
 
     return {
