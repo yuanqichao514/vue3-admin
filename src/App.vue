@@ -46,6 +46,19 @@
               </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
+          <el-submenu index="3">
+            <template #title>
+              <span>模块管理</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/category">
+                <i class="el-icon-menu" />分类管理
+              </el-menu-item>
+              <el-menu-item index="/good">
+                <i class="el-icon-s-goods" />商品管理
+              </el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
         </el-menu>
       </el-aside>
       <el-container class="content">
@@ -78,7 +91,7 @@ export default {
 
     const state = reactive({
       showMenu: true,
-      defaultOpen: ['1', '2'],
+      defaultOpen: ['1', '2', '3'],
       currentPath: '/'
     })
 
